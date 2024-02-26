@@ -17,6 +17,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: start;
+        min-height: 100vh; /* Define a altura mínima do corpo para ocupar toda a tela */
     }
     .container {
         display: flex;
@@ -73,11 +74,14 @@
         background: #0056b3;
     }
     footer {
+        background: #333;
+        color: #fff;
         text-align: center; /* Centralizes the content */
         font-weight: bold; /* Makes the text bold */
         width: 100%; /* Ensures the footer spans the entire width */
-        position: relative; /* Adjust if needed to better fit your layout */
-        margin-top: auto; /* Adds some space between the contacts and the footer */
+        position: fixed; /* Fixa o rodapé no final da tela */
+        bottom: 0; /* Coloca o rodapé no final da tela */
+        padding: 0px; /* Adiciona espaçamento interno */
     }
 
     .fa-home {
