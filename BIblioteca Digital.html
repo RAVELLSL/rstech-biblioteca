@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Biblioteca Digital</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"/>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(to right, #ADD8E6, #FFFFFF, #ADD8E6);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+    }
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 80%;
+        margin: 20px auto 0; /* Add margin to the top of the container */
+        gap: 20px;
+    }
+    .navbar {
+        background: #333;
+        color: #fff;
+        display: flex;
+        justify-content: center; /* Centering navbar content */
+        padding: 10px;
+        width: 100%;
+    }
+    .navbar a.home-icon {
+        margin: 0 120px; /* Adding spacing around home icon and search bar */
+    }
+    .card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+    width: calc(25% - 20px); /* Slightly increased card size */
+    margin-bottom: 20px; /* Added space below the card for better separation */
+    padding: 15px; /* Added padding inside the card for spacing */
+    transition: transform 0.3s ease-in-out;
+    display: flex; /* Adiciona display flex para alinhar os itens internos */
+    flex-direction: column; /* Ajusta a direção dos itens */
+    align-items: center; /* Centraliza os itens na direção transversal (horizontal) */
+}
+    .card img {
+    max-width: 100%;
+    height: auto;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin-bottom: 20px; /* Adiciona uma margem de 20px abaixo da imagem */
+    align-items: center;
+}
+    .card h2, .card p, .btn {
+        margin: 10px 0;
+    }
+    .btn {
+        background: #365858;
+        color: #fff;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: background 0.3s ease;
+    }
+    .btn:hover {
+        background: #0056b3;
+    }
+    footer {
+        text-align: center; /* Centralizes the content */
+        font-weight: bold; /* Makes the text bold */
+        width: 100%; /* Ensures the footer spans the entire width */
+        position: relative; /* Adjust if needed to better fit your layout */
+        margin-top: auto; /* Adds some space between the contacts and the footer */
+    }
+
+    .fa-home {
+        color: #FFFFFF; /* White color */
+    }
+
+    /* Modal CSS */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1000; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    /* Close Button */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<nav class="navbar">
+    <a class="home-icon" href="/"><i class="fas fa-home"></i></a>
+</nav>
+<div class="container">
+    <!-- Exemplo de Card -->
+    <div class="card">
+        <h2>Computação Quântica</h2> <!-- Título acima da imagem -->
+        <img alt="Capa do Livro" src="https://img.r7.com/images/computadores-quanticos-segredos-criptografia-new-york-times-10112023180214990?dimensions=677x677&&&&&&&resize=677x677&crop=1502x1502+0+730"/>        
+        <a class="btn" href="https://drive.google.com/file/d/1ImyYqy-WZ2OojuvSCOFWwAwQPpCuGrOn/view?usp=sharing" target="_blank">Acessar</a> <!-- Botão "Ler" dentro do card -->
+    </div>
+
+    
+    <!-- Repetir para mais artigos -->
+</div>
+<footer>
+    <p>2024</p>
+</footer>
+</body>
+</html>
