@@ -23,16 +23,16 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        width: 100%; /* Alterado para ocupar toda a largura */
-        padding: 0 10px; /* Adicionado espaçamento interno */
+        width: 80%; /* Largura do container ajustada */
+        padding: 20px 10px; /* Adicionado espaçamento interno */
         box-sizing: border-box; /* Garante que o padding não afete a largura total */
     }
     .navbar {
         background: #333;
         color: #fff;
         display: flex;
-        justify-content: center; /* Centering navbar content */
-        padding: 20px; /* Aumenta o padding para aumentar a largura da barra preta */
+        justify-content: center; /* Centralizar conteúdo da barra de navegação */
+        padding: 20px; /* Aumentar o padding para ampliar a largura da barra */
         width: 100%;
     }
     .card {
@@ -40,25 +40,23 @@
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         text-align: center;
-        width: calc(33% - 20px); /* Reduzindo a largura do card para ocupar cerca de um terço da tela em telas maiores */
-        max-width: 300px; /* Limitando a largura máxima do card */
-        margin-bottom: 20px; /* Added space below the card for better separation */
-        padding: 15px; /* Added padding inside the card for spacing */
+        width: 30%; /* Largura do card ajustada para telas grandes */
+        margin: 0 15px 30px; /* Espaçamento externo ajustado */
+        padding: 15px; /* Espaçamento interno do card */
         transition: transform 0.3s ease-in-out;
-        display: flex; /* Adiciona display flex para alinhar os itens internos */
-        flex-direction: column; /* Ajusta a direção dos itens */
-        align-items: center; /* Centraliza os itens na direção transversal (horizontal) */
+        display: flex; /* Flexbox para alinhar itens */
+        flex-direction: column; /* Direção da flexbox */
+        align-items: center; /* Alinhamento de itens */
     }
     .card img {
         max-width: 100%;
         height: auto;
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
-        margin-bottom: 20px; /* Adiciona uma margem de 20px abaixo da imagem */
+        margin-bottom: 20px; /* Espaçamento inferior da imagem */
     }
     .card h2, .card p, .btn {
         margin: 10px 0;
-        font-size: 14px; /* Reduzindo o tamanho do texto */
     }
     .btn {
         background: #365858;
@@ -74,32 +72,32 @@
     footer {
         background: #333;
         color: #fff;
-        text-align: center; /* Centralizes the content */
-        font-weight: bold; /* Makes the text bold */
-        width: 100%; /* Ensures the footer spans the entire width */
-        position: fixed; /* Fixa o rodapé no final da tela */
-        bottom: 0; /* Coloca o rodapé no final da tela */
-        padding: 10px 0; /* Adiciona espaçamento interno */
+        text-align: center; /* Alinhamento central */
+        font-weight: bold; /* Negrito */
+        width: 100%; /* Largura total */
+        position: fixed; /* Posição fixa */
+        bottom: 0; /* Alinhar ao rodapé */
+        padding: 10px 0; /* Espaçamento interno */
     }
     .fa-home {
-        color: #FFFFFF; /* White color */
+        color: #FFFFFF; /* Cor branca */
     }
     /* Modal CSS */
     .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1000; /* Sit on top */
+        display: none; /* Ocultar por padrão */
+        position: fixed; /* Posição fixa */
+        z-index: 1000; /* Z-index */
         left: 0;
         top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        width: 100%; /* Largura total */
+        height: 100%; /* Altura total */
+        overflow: auto; /* Rolagem habilitada se necessário */
+        background-color: rgba(0,0,0,0.4); /* Fundo preto com opacidade */
     }
     /* Modal Content/Box */
     .modal-content {
         background-color: #fefefe;
-        margin: 15% auto; /* 15% from the top and centered */
+        margin: 15% auto; /* Margem superior e inferior automática */
         padding: 20px;
         border-radius: 8px;
         text-align: center;
@@ -116,6 +114,13 @@
         color: black;
         text-decoration: none;
         cursor: pointer;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .card {
+            width: 90%; /* Largura do card ajustada para telas menores */
+            margin: 0 0 30px; /* Espaçamento externo ajustado */
+        }
     }
 </style>
 </head>
