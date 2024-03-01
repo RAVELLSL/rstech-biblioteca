@@ -23,9 +23,9 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        width: 80%;
-        margin: 20px auto 0; /* Add margin to the top of the container */
-        gap: 20px;
+        width: 100%; /* Alterado para ocupar toda a largura */
+        padding: 0 10px; /* Adicionado espaçamento interno */
+        box-sizing: border-box; /* Garante que o padding não afete a largura total */
     }
     .navbar {
         background: #333;
@@ -36,28 +36,29 @@
         width: 100%;
     }
     .card {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    text-align: center;
-    width: calc(25% - 20px); /* Slightly increased card size */
-    margin-bottom: 20px; /* Added space below the card for better separation */
-    padding: 15px; /* Added padding inside the card for spacing */
-    transition: transform 0.3s ease-in-out;
-    display: flex; /* Adiciona display flex para alinhar os itens internos */
-    flex-direction: column; /* Ajusta a direção dos itens */
-    align-items: center; /* Centraliza os itens na direção transversal (horizontal) */
-}
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        text-align: center;
+        width: calc(33% - 20px); /* Reduzindo a largura do card para ocupar cerca de um terço da tela em telas maiores */
+        max-width: 300px; /* Limitando a largura máxima do card */
+        margin-bottom: 20px; /* Added space below the card for better separation */
+        padding: 15px; /* Added padding inside the card for spacing */
+        transition: transform 0.3s ease-in-out;
+        display: flex; /* Adiciona display flex para alinhar os itens internos */
+        flex-direction: column; /* Ajusta a direção dos itens */
+        align-items: center; /* Centraliza os itens na direção transversal (horizontal) */
+    }
     .card img {
-    max-width: 100%;
-    height: auto;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    margin-bottom: 20px; /* Adiciona uma margem de 20px abaixo da imagem */
-    align-items: center;
-}
+        max-width: 100%;
+        height: auto;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        margin-bottom: 20px; /* Adiciona uma margem de 20px abaixo da imagem */
+    }
     .card h2, .card p, .btn {
         margin: 10px 0;
+        font-size: 14px; /* Reduzindo o tamanho do texto */
     }
     .btn {
         background: #365858;
@@ -78,13 +79,11 @@
         width: 100%; /* Ensures the footer spans the entire width */
         position: fixed; /* Fixa o rodapé no final da tela */
         bottom: 0; /* Coloca o rodapé no final da tela */
-        padding: 0px; /* Adiciona espaçamento interno */
+        padding: 10px 0; /* Adiciona espaçamento interno */
     }
-
     .fa-home {
         color: #FFFFFF; /* White color */
     }
-
     /* Modal CSS */
     .modal {
         display: none; /* Hidden by default */
@@ -97,7 +96,6 @@
         overflow: auto; /* Enable scroll if needed */
         background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     }
-
     /* Modal Content/Box */
     .modal-content {
         background-color: #fefefe;
@@ -106,7 +104,6 @@
         border-radius: 8px;
         text-align: center;
     }
-
     /* Close Button */
     .close {
         color: #aaa;
@@ -114,7 +111,6 @@
         font-size: 28px;
         font-weight: bold;
     }
-
     .close:hover,
     .close:focus {
         color: black;
@@ -134,8 +130,6 @@
         <img alt="Capa do Livro" src="https://img.r7.com/images/computadores-quanticos-segredos-criptografia-new-york-times-10112023180214990?dimensions=677x677&&&&&&&resize=677x677&crop=1502x1502+0+730"/>        
         <a class="btn" href="https://drive.google.com/file/d/1ImyYqy-WZ2OojuvSCOFWwAwQPpCuGrOn/view?usp=sharing" target="_blank">Acessar</a> <!-- Botão "Ler" dentro do card -->
     </div>
-
-    
     <!-- Repetir para mais artigos -->
 </div>
 <footer>
