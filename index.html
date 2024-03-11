@@ -5,61 +5,51 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Biblioteca Digital</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"/>
+
 <style>
     body {
-        font-family: Arial, sans-serif;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         margin: 0;
         padding: 0;
-        line-height: 1.6;
+        background-color: #f4f4f4;
         color: #333;
-        background: linear-gradient(to right, #ADD8E6, #FFFFFF, #ADD8E6);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: start;
-        min-height: 100vh; /* Define a altura mínima do corpo para ocupar toda a tela */
     }
     .container {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        width: 80%; /* Largura do container ajustada */
-        padding: 20px 10px; /* Adicionado espaçamento interno */
-        box-sizing: border-box; /* Garante que o padding não afete a largura total */
-    }
-    .navbar {
-        background: #333;
-        color: #fff;
-        display: flex;
-        justify-content: center; /* Centralizar conteúdo da barra de navegação */
-        padding: 20px; /* Aumentar o padding para ampliar a largura da barra */
-        width: 100%;
+        align-items: flex-start;
+        padding: 20px;
     }
     .card {
         background: #fff;
         border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         text-align: center;
-        width: 30%; /* Largura do card ajustada para telas grandes */
-        margin: 0 15px 30px; /* Espaçamento externo ajustado */
-        padding: 15px; /* Espaçamento interno do card */
+        width: calc(33.33% - 40px);
+        margin: 20px;
+        padding: 20px;
         transition: transform 0.3s ease-in-out;
-        display: flex; /* Flexbox para alinhar itens */
-        flex-direction: column; /* Direção da flexbox */
-        align-items: center; /* Alinhamento de itens */
+    }
+    .card:hover {
+        transform: translateY(-5px);
     }
     .card img {
         max-width: 100%;
-        height: auto;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-        margin-bottom: 20px; /* Espaçamento inferior da imagem */
+        border-radius: 8px;
+        margin-bottom: 20px;
     }
-    .card h2, .card p, .btn {
-        margin: 10px 0;
+    .card h2 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    .card p {
+        margin-bottom: 20px;
+        color: #666;
     }
     .btn {
-        background: #365858;
+        background: #0056b3;
         color: #fff;
         padding: 10px 20px;
         text-decoration: none;
@@ -67,78 +57,39 @@
         transition: background 0.3s ease;
     }
     .btn:hover {
-        background: #0056b3;
+        background: #003d80;
     }
-    footer {
-        background: #333;
-        color: #fff;
-        text-align: center; /* Alinhamento central */
-        font-weight: bold; /* Negrito */
-        width: 100%; /* Largura total */
-        position: fixed; /* Posição fixa */
-        bottom: 0; /* Alinhar ao rodapé */
-        padding: 10px 0; /* Espaçamento interno */
+    .btn i {
+        margin-right: 5px;
     }
-    .fa-home {
-        color: #FFFFFF; /* Cor branca */
-    }
-    /* Modal CSS */
-    .modal {
-        display: none; /* Ocultar por padrão */
-        position: fixed; /* Posição fixa */
-        z-index: 1000; /* Z-index */
-        left: 0;
-        top: 0;
-        width: 100%; /* Largura total */
-        height: 100%; /* Altura total */
-        overflow: auto; /* Rolagem habilitada se necessário */
-        background-color: rgba(0,0,0,0.4); /* Fundo preto com opacidade */
-    }
-    /* Modal Content/Box */
-    .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto; /* Margem superior e inferior automática */
-        padding: 20px;
-        border-radius: 8px;
+    .page-title {
         text-align: center;
-    }
-    /* Close Button */
-    .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-    .close:hover,
-    .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 20px;
     }
 
     @media only screen and (max-width: 768px) {
         .card {
-            width: 90%; /* Largura do card ajustada para telas menores */
-            margin: 0 0 30px; /* Espaçamento externo ajustado */
+            width: auto;
+            margin: auto;
         }
     }
 </style>
+
 </head>
 <body>
-<nav class="navbar">
-    <!-- <a class="home-icon" href="/">Home</a> -->
-</nav>
+<h1 class="page-title">Biblioteca Digital</h1>
+
 <div class="container">
     <!-- Exemplo de Card -->
     <div class="card">
-        <h2>Computação Quântica</h2> <!-- Título acima da imagem -->
-        <img alt="Capa do Livro" src="https://img.r7.com/images/computadores-quanticos-segredos-criptografia-new-york-times-10112023180214990?dimensions=677x677&&&&&&&resize=677x677&crop=1502x1502+0+730"/>        
-        <a class="btn" href="https://drive.google.com/file/d/1ImyYqy-WZ2OojuvSCOFWwAwQPpCuGrOn/view?usp=sharing" target="_blank">Acessar</a> <!-- Botão "Ler" dentro do card -->
+        <img alt="Capa do Livro - Computação Quântica" src="https://img.r7.com/images/computadores-quanticos-segredos-criptografia-new-york-times-10112023180214990?dimensions=677x677&&&&&&&resize=677x677&crop=1502x1502+0+730"/>
+        <h2>Computação Quântica</h2>
+        <p>Explore o fascinante mundo da computação quântica e suas aplicações revolucionárias.</p>
+        <a class="btn" href="https://drive.google.com/file/d/1ImyYqy-WZ2OojuvSCOFWwAwQPpCuGrOn/view?usp=sharing" target="_blank"><i class="fas fa-book"></i> Acessar</a>
     </div>
     <!-- Repetir para mais artigos -->
 </div>
-<footer>
-    <p>2024</p>
-</footer>
 </body>
 </html>
