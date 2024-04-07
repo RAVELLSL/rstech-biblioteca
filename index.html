@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -31,19 +32,30 @@
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         text-align: center;
-        width: calc(33.33% - 40px);
+        width: calc(50% - 40px); /* Definindo a largura dos cards */
         margin: 20px;
         padding: 20px;
         transition: transform 0.3s ease-in-out;
         max-width: 300px;
+        display: flex;
+        flex-direction: column;
     }
     .card:hover {
         transform: translateY(-5px);
     }
     .card img {
-        max-width: 100%;
-        border-radius: 8px;
-        margin-bottom: 20px;
+        width: 100%;
+        height: 300px; /* Definindo a altura fixa */
+        object-fit: cover; /* Para garantir que a imagem cubra o espaço definido */
+        object-position: top; /* Alinhar a imagem a partir do topo */
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    .card-content {
+        flex-grow: 1; /* Ocupa o espaço disponível */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
     .card h2 {
         font-size: 1.5rem;
@@ -51,8 +63,13 @@
         color: #333;
     }
     .card p {
-        margin-bottom: 20px;
+        margin: 0;
         color: #666;
+        padding: 10px;
+        flex-grow: 1; /* Ocupa o espaço disponível */
+    }
+    .btn-container {
+        margin-top: 20px;
     }
     .btn {
         background: #0056b3;
@@ -84,7 +101,7 @@
 
     @media only screen and (min-width: 992px) {
         .card {
-            width: calc(25% - 40px);
+            width: calc(50% - 40px); /* Redefinindo a largura dos cards */
         }
     }
 </style>
@@ -96,10 +113,38 @@
 <div class="container">
     <!-- Exemplo de Card -->
     <div class="card">
+        <img alt="Capa do Livro - Ficção x Realidade" src="https://i.pinimg.com/564x/2d/58/ec/2d58ec7e1db96b865a93255798faf9c2.jpg"/>
+        <div class="card-content">
+            <h2>Ficção vs Realidade</h2>
+            <p>Ficção vs Realidade discute o limite entre a ficção, probabilidades e realizações tecnológicas sob a ótica real da ciência, física, química e biologia.</p>
+            <div class="btn-container">
+                <a class="btn" href="https://drive.google.com/file/d/1rmuFTjG-qq_aFbjG83bnDaxYWWz_iWlt/view?usp=sharing" target="_blank"><i class="fas fa-book"></i> Acessar</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exemplo de Card -->
+    <div class="card">
+        <img alt="Capa do Livro - Patologias Tecnológicas" src="https://i.pinimg.com/564x/f8/ce/4f/f8ce4f16897ac353a9a9c4e5ac00c6d0.jpg"/>
+        <div class="card-content">
+            <h2>Patologias Tecnológicas</h2>
+            <p>Patologias Tecnológicas discute as doenças associadas com tecnologia e sua influência na sociedade atual, seus impactos, características e como podemos minimizar seus efeitos.</p>
+            <div class="btn-container">
+                <a class="btn" href="https://drive.google.com/file/d/1QYaM7eLm4aeJCZJB2YDArLJMzpKzdwNV/view?usp=sharing" target="_blank"><i class="fas fa-book"></i> Acessar</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exemplo de Card -->
+    <div class="card">
         <img alt="Capa do Livro - Computação Quântica" src="https://img.r7.com/images/computadores-quanticos-segredos-criptografia-new-york-times-10112023180214990?dimensions=677x677&&&&&&&resize=677x677&crop=1502x1502+0+730"/>
-        <h2>Computação Quântica</h2>
-        <p>Explore o fascinante mundo da computação quântica e suas aplicações revolucionárias.</p>
-        <a class="btn" href="https://drive.google.com/file/d/1ImyYqy-WZ2OojuvSCOFWwAwQPpCuGrOn/view?usp=sharing" target="_blank"><i class="fas fa-book"></i> Acessar</a>
+        <div class="card-content">
+            <h2>Computação Quântica</h2>
+            <p>Explore o fascinante mundo da computação quântica. Dos conceitos básicos aos algoritmos quânticos. Dos fundamentos básicos até aplicações práticas.</p>
+            <div class="btn-container">
+                <a class="btn" href="https://drive.google.com/file/d/1ImyYqy-WZ2OojuvSCOFWwAwQPpCuGrOn/view?usp=sharing" target="_blank"><i class="fas fa-book"></i> Acessar</a>
+            </div>
+        </div>
     </div>
     <!-- Repetir para mais artigos -->
 </div>
