@@ -26,7 +26,7 @@ body {
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around; /* ajuste do alinhamento para distribuição uniforme */
     align-items: flex-start;
 }
 
@@ -36,14 +36,14 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     text-align: center;
-    width: 300px; /* largura fixa */
+    width: 300px; /* largura fixa para todos os tamanhos de tela */
+    height: 500px; /* altura fixa para manter todos os cards do mesmo tamanho */
     margin: 20px;
     padding: 20px;
     transition: transform 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
-    height: auto; /* altura ajustável ao conteúdo */
-    min-height: 450px; /* altura mínima para consistência */
+    justify-content: space-between; /* espaçamento interno distribuído */
 }
 
 /* Efeito ao passar o mouse sobre o card */
@@ -54,7 +54,7 @@ body {
 /* Estilização das imagens dentro dos cards */
 .card img {
     width: 100%;
-    height: 300px;
+    height: 180px; /* altura fixa para as imagens */
     object-fit: cover;
     object-position: top;
     border-top-left-radius: 8px;
@@ -63,7 +63,6 @@ body {
 
 /* Conteúdo dentro do card */
 .card-content {
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -76,10 +75,8 @@ body {
 }
 
 .card p {
-    margin: 0;
     color: #666;
-    padding: 10px;
-    flex-grow: 1;
+    padding: 0 10px;
 }
 
 /* Botões dentro dos cards */
@@ -112,19 +109,14 @@ body {
     margin-bottom: 20px;
 }
 
-/* Media queries para responsividade */
+/* Media queries para ajustes responsivos */
 @media only screen and (max-width: 768px) {
     .card {
         width: calc(100% - 40px); /* ajuste para largura total com margem */
-        margin: 20px 20px; /* ajuste das margens */
+        height: auto; /* altura ajustável ao conteúdo em telas menores */
     }
 }
 
-@media only screen and (min-width: 992px) {
-    .container {
-        justify-content: space-around; /* ajuste do alinhamento quando há espaço extra */
-    }
-}
 
 </style>
 
