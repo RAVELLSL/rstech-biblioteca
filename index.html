@@ -1,166 +1,254 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Biblioteca Digital</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"/>
-
-<style>
-/* Estilos gerais da página */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-image: url('https://media.tenor.com/wngVe_Erkh8AAAAC/blue-white.gif');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    color: #333;
-}
-
-/* Container principal que engloba os cards */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around; /* ajuste do alinhamento para distribuição uniforme */
-    align-items: flex-start;
-}
-
-/* Estilização dos cards */
-.card {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    text-align: center;
-    width: 300px; /* largura fixa para todos os tamanhos de tela */
-    height: 500px; /* altura fixa para manter todos os cards do mesmo tamanho */
-    margin: 20px;
-    padding: 20px;
-    transition: transform 0.3s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* espaçamento interno distribuído */
-}
-
-/* Efeito ao passar o mouse sobre o card */
-.card:hover {
-    transform: translateY(-5px);
-}
-
-/* Estilização das imagens dentro dos cards */
-.card img {
-    width: 100%;
-    height: 180px; /* altura fixa para as imagens */
-    object-fit: cover;
-    object-position: top;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-}
-
-/* Conteúdo dentro do card */
-.card-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.card h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.card p {
-    color: #666;
-    padding: 0 10px;
-}
-
-/* Botões dentro dos cards */
-.btn-container {
-    margin-top: 20px;
-}
-
-.btn {
-    background: #0056b3;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 25px;
-    transition: background 0.3s ease;
-}
-
-.btn:hover {
-    background: #003d80;
-}
-
-.btn i {
-    margin-right: 5px;
-}
-
-/* Título principal da página */
-.page-title {
-    text-align: center;
-    font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-/* Media queries para ajustes responsivos */
-@media only screen and (max-width: 768px) {
-    .card {
-        width: calc(100% - 40px); /* ajuste para largura total com margem */
-        height: auto; /* altura ajustável ao conteúdo em telas menores */
+  <meta charset="UTF-8">
+  <title>Biblioteca Digital Inteligente</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --card-bg: #ffffff;
+      --primary: #0f4c81;
+      --secondary: #2a9d8f;
+      --accent: #e9c46a;
+      --text-main: #2d2d2d;
+      --text-light: #5a5a5a;
+      --shadow: rgba(15, 76, 129, 0.15);
+      --modal-bg: rgba(0, 0, 0, 0.7);
     }
-}
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height:1.5;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      padding: 1.2rem;
+      text-align: center;
+      box-shadow: 0 4px 8px var(--shadow);
+    }
+    header h1 { font-size: 2rem; letter-spacing: 1px; }
+    main {
+      max-width: 360px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .search-bar {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      margin-bottom: 1.5rem;
+      border: none;
+      border-radius: 6px;
+      background: #fff;
+      box-shadow: 0 2px 6px var(--shadow);
+      font-size: 1rem;
+      color: var(--text-main);
+    }
+    .search-bar::placeholder { color: var(--text-light); }
 
+    .card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px var(--shadow);
+      transition: transform .2s, box-shadow .2s;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2rem;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+    .card img.book-img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    .card .info {
+      padding: 1rem;
+      text-align: center;
+    }
+    .card .info h3 {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .card .info button {
+      padding: 0.6rem 1.2rem;
+      background: var(--accent);
+      color: var(--text-main);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background .2s, transform .2s;
+    }
+    .card .info button:hover {
+      background: #d4af3a;
+      transform: translateY(-2px);
+    }
 
-</style>
-
+    /* Modal */
+    #chapterModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: var(--modal-bg);
+      align-items: center; justify-content: center;
+      padding: 1rem;
+      z-index: 1000;
+    }
+    #chapterContent {
+      background: #fff;
+      width: 90%; max-width: 600px;
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 8px 24px var(--shadow);
+      text-align: center;
+      max-height: 80%;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    #chapterContent h2 {
+      font-size: 1.5rem;
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+    }
+    #chapterContent p.presentation {
+      font-size: 1rem;
+      color: var(--text-light);
+      margin: 0 auto;
+      max-width: 95%;
+    }
+    .chapter-summary {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .chapter-summary img {
+      max-width: 45%;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px var(--shadow);
+      object-fit: contain;
+    }
+    .chapters-list {
+      display: grid;
+      width: 100%;
+      gap: 0.8rem;
+      grid-template-columns: repeat(2, 1fr);
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    @media (max-width: 600px) {
+      .chapters-list {
+        grid-template-columns: 1fr;
+      }
+    }
+    .chapters-list li a {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 500;
+      padding: 0.3rem 0;
+      border-bottom: 1px dashed transparent;
+      transition: color .2s, border-color .2s;
+      display: block;
+      text-align: left;
+    }
+    .chapters-list li a:hover {
+      color: var(--secondary);
+      border-color: var(--accent);
+    }
+    #closeChapters {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      font-size: 1.5rem;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: color .2s;
+    }
+    #closeChapters:hover {
+      color: var(--primary);
+    }
+  </style>
 </head>
 <body>
-<h1 class="page-title">Biblioteca Digital</h1>
+  <header>
+    <h1>Biblioteca Digital</h1>
+  </header>
+  <main>
+    <input id="searchInput" class="search-bar" type="text" placeholder="Pesquisar por título...">
 
-<div class="container">
-    <!-- Exemplo de Card -->
     <div class="card">
-        <img alt="Capa do Livro - Ficção x Realidade" src="https://i.pinimg.com/564x/2d/58/ec/2d58ec7e1db96b865a93255798faf9c2.jpg"/>
-        <div class="card-content">
-            <h2>Ficção vs Realidade</h2>
-            <p>Ficção vs Realidade discute o limite entre a ficção, probabilidades e realizações tecnológicas sob a ótica real da ciência, física, química e biologia.</p>
-            <div class="btn-container">
-                <a class="btn" href="https://drive.google.com/file/d/1rmuFTjG-qq_aFbjG83bnDaxYWWz_iWlt/view?usp=sharing" target="_blank"><i class="fas fa-book"></i> Acessar</a>
-            </div>
-        </div>
+      <img class="book-img" src="https://i.ibb.co/WvFbGRZ9/correntes-filos-ficas-da-tecnologia.png" alt="Correntes Filosóficas da Tecnologia">
+      <div class="info">
+        <h3>Correntes Filosóficas da Tecnologia</h3>
+        <button id="openBook">Acessar</button>
+      </div>
     </div>
+  </main>
 
-    <!-- Exemplo de Card -->
-    <div class="card">
-        <img alt="Capa do Livro - Patologias Tecnológicas" src="https://i.pinimg.com/564x/f8/ce/4f/f8ce4f16897ac353a9a9c4e5ac00c6d0.jpg"/>
-        <div class="card-content">
-            <h2>Patologias Tecnológicas</h2>
-            <p>Patologias Tecnológicas discute as doenças associadas com tecnologia e sua influência na sociedade atual, seus impactos, características e como podemos minimizar seus efeitos.</p>
-            <div class="btn-container">
-                <a class="btn" href="https://drive.google.com/file/d/1QYaM7eLm4aeJCZJB2YDArLJMzpKzdwNV/view?usp=sharing" target="_blank"><i class="fas fa-book"></i> Acessar</a>
-            </div>
-        </div>
+  <div id="chapterModal">
+    <div id="chapterContent">
+      <span id="closeChapters">&times;</span>
+      <h2>Correntes Filosóficas da Tecnologia</h2>
+      <p class="presentation">
+        Uma análise crítica dos fundamentos teóricos que moldam a evolução e o impacto da tecnologia na sociedade contemporânea.
+      </p>
+      <div class="chapter-summary">
+        <img src="https://i.ibb.co/WvFbGRZ9/correntes-filos-ficas-da-tecnologia.png" alt="Capa do livro">
+      </div>
+      <ul class="chapters-list" id="chaptersList">
+        <li><a href="https://drive.google.com/file/d/1u23GiSJok3yiOtA6d71TIPA3cUj55xUG/preview" target="_blank">1.  Tecnoautoritarismo</a></li>
+        <li><a href="https://drive.google.com/file/d/1-69zSGw-CvKMXx0IAURSDzLgsUWZM1E7/preview" target="_blank">2.  Cyberpunk</a></li>
+        <li><a href="https://drive.google.com/file/d/1-Z6juEJ0bahbu7q_o0GX_44oDWa2Q3Ci/preview" target="_blank">3.  Cypherpunk</a></li>
+        <li><a href="https://drive.google.com/file/d/1UuSGPgqxn4eRfmZAvzVEUdDtGBon8OI-/preview" target="_blank">4.  Dataismo</a></li>
+        <li><a href="https://drive.google.com/file/d/1DRxvbM_lep2CVq6ytXCNn165oVZndmeT/preview" target="_blank">5.  Transumanismo</a></li>
+        <li><a href="https://drive.google.com/file/d/1843U4GDoDdNvxCVwTLzg_dUN-OtOoSov/preview" target="_blank">6.  Biohacking</a></li>
+        <li><a href="https://drive.google.com/file/d/1Ze0onK664DnSVdrHJ369EvlzHEODjYf0/preview" target="_blank">7.  Nootrópicos</a></li>
+        <li><a href="https://drive.google.com/file/d/10VyXNfGzTZnd36ep_lCmFRp6t-744D44/preview" target="_blank">8.  Ludologia</a></li>
+        <li><a href="https://drive.google.com/file/d/1P-FTCm6Osx8X2NTsOGoEi3w2HGUvBQ9q/preview" target="_blank">9.  Anarquismo Digital</a></li>
+        <li><a href="https://drive.google.com/file/d/1OoIGap1zUC2-PhOKPqiqnZ5nIbD80kB7/preview" target="_blank">10. Neo-Ludismo</a></li>
+        <li><a href="https://drive.google.com/file/d/1kFDvYe5dBRn9zVlosFJnJK0Pepmq9J30/preview" target="_blank">11. Tecnofeminismo</a></li>
+        <li><a href="https://drive.google.com/file/d/1DeBdjmhk_JDypwNQ6BBzmAy0R7QyDY8p/preview" target="_blank">12. Tecnogaianismo</a></li>
+        <li><a href="https://drive.google.com/file/d/1w32lOSIH_vHz7f9-1Pzq3_vwaW-NGHJN/preview" target="_blank">13. Cibernética</a></li>
+        <li><a href="https://drive.google.com/file/d/1wUBC1Bz3POFiGQkstFwSJijFn0jlBZqa/preview" target="_blank">14. Singularidade Tecnológica</a></li>
+      </ul>
     </div>
+  </div>
 
-    <!-- Exemplo de Card -->
-    <div class="card">
-        <img alt="Capa do Livro - Computação Quântica" src="https://img.r7.com/images/computadores-quanticos-segredos-criptografia-new-york-times-10112023180214990?dimensions=677x677&&&&&&&resize=677x677&crop=1502x1502+0+730"/>
-        <div class="card-content">
-            <h2>Computação Quântica</h2>
-            <p>Explore o fascinante mundo da computação quântica. Dos conceitos básicos aos algoritmos quânticos. Dos fundamentos básicos até aplicações práticas.</p>
-            <div class="btn-container">
-                <a class="btn" href="https://drive.google.com/file/d/1ImyYqy-WZ2OojuvSCOFWwAwQPpCuGrOn/view?usp=sharing" target="_blank"><i class="fas fa-book"></i> Acessar</a>
-            </div>
-        </div>
-    </div>
-    <!-- Repetir para mais artigos -->
-</div>
+  <script>
+    const openBook     = document.getElementById('openBook');
+    const chapterModal = document.getElementById('chapterModal');
+    const closeCh      = document.getElementById('closeChapters');
+
+    openBook.addEventListener('click', () => {
+      chapterModal.style.display = 'flex';
+    });
+    closeCh.addEventListener('click', () => {
+      chapterModal.style.display = 'none';
+    });
+    chapterModal.addEventListener('click', e => {
+      if (e.target === chapterModal) closeCh.click();
+    });
+
+    document.getElementById('searchInput').addEventListener('input', e => {
+      const termo = e.target.value.toLowerCase();
+      const card  = document.querySelector('.card');
+      card.style.display = card.querySelector('h3').textContent.toLowerCase().includes(termo)
+        ? 'flex' : 'none';
+    });
+  </script>
 </body>
 </html>
