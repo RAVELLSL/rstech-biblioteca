@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Biblioteca Digital Inteligente</title>
+  <title>Biblioteca Digital</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <style>
     :root {
@@ -16,12 +16,12 @@
       --shadow: rgba(15, 76, 129, 0.15);
       --modal-bg: rgba(0, 0, 0, 0.7);
     }
-    * { margin:0; padding:0; box-sizing:border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', sans-serif;
       background: var(--bg);
       color: var(--text-main);
-      line-height:1.5;
+      line-height: 1.5;
     }
     header {
       background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -142,29 +142,33 @@
       box-shadow: 0 4px 12px var(--shadow);
       object-fit: contain;
     }
+
+    /* Lista de capítulos em fluxo vertical por coluna */
     .chapters-list {
-      display: grid;
-      width: 100%;
-      gap: 0.8rem;
-      grid-template-columns: repeat(2, 1fr);
+      columns: 2;               /* Duas colunas de fluxo vertical */
+      column-gap: 1.5rem;       /* Espaço entre colunas */
       list-style: none;
       padding: 0;
-      margin: 0;
+      margin: 0 auto;
     }
     @media (max-width: 600px) {
       .chapters-list {
-        grid-template-columns: 1fr;
+        columns: 1;
       }
     }
+    .chapters-list li {
+      break-inside: avoid;      /* Evita quebra no meio do item */
+      margin-bottom: 0.5rem;
+    }
     .chapters-list li a {
+      display: block;
+      text-align: center;
       text-decoration: none;
       color: var(--primary);
       font-weight: 500;
-      padding: 0.3rem 0;
+      padding: 0.2rem 0;
       border-bottom: 1px dashed transparent;
       transition: color .2s, border-color .2s;
-      display: block;
-      text-align: left;
     }
     .chapters-list li a:hover {
       color: var(--secondary);
@@ -189,9 +193,10 @@
   </header>
   <main>
     <input id="searchInput" class="search-bar" type="text" placeholder="Pesquisar por título...">
-
     <div class="card">
-      <img class="book-img" src="https://i.ibb.co/WvFbGRZ9/correntes-filos-ficas-da-tecnologia.png" alt="Correntes Filosóficas da Tecnologia">
+      <img class="book-img"
+           src="https://i.ibb.co/WvFbGRZ9/correntes-filos-ficas-da-tecnologia.png"
+           alt="Correntes Filosóficas da Tecnologia">
       <div class="info">
         <h3>Correntes Filosóficas da Tecnologia</h3>
         <button id="openBook">Acessar</button>
@@ -207,18 +212,19 @@
         Uma análise crítica dos fundamentos teóricos que moldam a evolução e o impacto da tecnologia na sociedade contemporânea.
       </p>
       <div class="chapter-summary">
-        <img src="https://i.ibb.co/WvFbGRZ9/correntes-filos-ficas-da-tecnologia.png" alt="Capa do livro">
+        <img src="https://i.ibb.co/WvFbGRZ9/correntes-filos-ficas-da-tecnologia.png"
+             alt="Capa do livro">
       </div>
       <ul class="chapters-list" id="chaptersList">
-        <li><a href="https://drive.google.com/file/d/1u23GiSJok3yiOtA6d71TIPA3cUj55xUG/preview" target="_blank">1.  Tecnoautoritarismo</a></li>
-        <li><a href="https://drive.google.com/file/d/1-69zSGw-CvKMXx0IAURSDzLgsUWZM1E7/preview" target="_blank">2.  Cyberpunk</a></li>
-        <li><a href="https://drive.google.com/file/d/1-Z6juEJ0bahbu7q_o0GX_44oDWa2Q3Ci/preview" target="_blank">3.  Cypherpunk</a></li>
-        <li><a href="https://drive.google.com/file/d/1UuSGPgqxn4eRfmZAvzVEUdDtGBon8OI-/preview" target="_blank">4.  Dataismo</a></li>
-        <li><a href="https://drive.google.com/file/d/1DRxvbM_lep2CVq6ytXCNn165oVZndmeT/preview" target="_blank">5.  Transumanismo</a></li>
-        <li><a href="https://drive.google.com/file/d/1843U4GDoDdNvxCVwTLzg_dUN-OtOoSov/preview" target="_blank">6.  Biohacking</a></li>
-        <li><a href="https://drive.google.com/file/d/1Ze0onK664DnSVdrHJ369EvlzHEODjYf0/preview" target="_blank">7.  Nootrópicos</a></li>
-        <li><a href="https://drive.google.com/file/d/10VyXNfGzTZnd36ep_lCmFRp6t-744D44/preview" target="_blank">8.  Ludologia</a></li>
-        <li><a href="https://drive.google.com/file/d/1P-FTCm6Osx8X2NTsOGoEi3w2HGUvBQ9q/preview" target="_blank">9.  Anarquismo Digital</a></li>
+        <li><a href="https://drive.google.com/file/d/1u23GiSJok3yiOtA6d71TIPA3cUj55xUG/preview" target="_blank">1. Tecnoautoritarismo</a></li>
+        <li><a href="https://drive.google.com/file/d/1-69zSGw-CvKMXx0IAURSDzLgsUWZM1E7/preview" target="_blank">2. Cyberpunk</a></li>
+        <li><a href="https://drive.google.com/file/d/1-Z6juEJ0bahbu7q_o0GX_44oDWa2Q3Ci/preview" target="_blank">3. Cypherpunk</a></li>
+        <li><a href="https://drive.google.com/file/d/1UuSGPgqxn4eRfmZAvzVEUdDtGBon8OI-/preview" target="_blank">4. Dataismo</a></li>
+        <li><a href="https://drive.google.com/file/d/1DRxvbM_lep2CVi6ytXCNn165oVZndmeT/preview" target="_blank">5. Transumanismo</a></li>
+        <li><a href="https://drive.google.com/file/d/1843U4GDoDdNvxCVwTLzg_dUN-OtOoSov/preview" target="_blank">6. Biohacking</a></li>
+        <li><a href="https://drive.google.com/file/d/1Ze0onK664DnSVdrHJ369EvlzHEODjYf0/preview" target="_blank">7. Nootrópicos</a></li>
+        <li><a href="https://drive.google.com/file/d/10VyXNfGzTZnd36ep_lCmFRp6t-744D44/preview" target="_blank">8. Ludologia</a></li>
+        <li><a href="https://drive.google.com/file/d/1P-FTCm6Osx8X2NTsOGoEi3w2HGUvBQ9p/preview" target="_blank">9. Anarquismo Digital</a></li>
         <li><a href="https://drive.google.com/file/d/1OoIGap1zUC2-PhOKPqiqnZ5nIbD80kB7/preview" target="_blank">10. Neo-Ludismo</a></li>
         <li><a href="https://drive.google.com/file/d/1kFDvYe5dBRn9zVlosFJnJK0Pepmq9J30/preview" target="_blank">11. Tecnofeminismo</a></li>
         <li><a href="https://drive.google.com/file/d/1DeBdjmhk_JDypwNQ6BBzmAy0R7QyDY8p/preview" target="_blank">12. Tecnogaianismo</a></li>
@@ -246,8 +252,8 @@
     document.getElementById('searchInput').addEventListener('input', e => {
       const termo = e.target.value.toLowerCase();
       const card  = document.querySelector('.card');
-      card.style.display = card.querySelector('h3').textContent.toLowerCase().includes(termo)
-        ? 'flex' : 'none';
+      card.style.display = card.querySelector('h3').textContent
+        .toLowerCase().includes(termo) ? 'flex' : 'none';
     });
   </script>
 </body>
