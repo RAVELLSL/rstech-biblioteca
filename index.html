@@ -6,49 +6,39 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <style>
     :root {
-      --bg: #f0f4f8;
-      --card-bg: #ffffff;
-      --primary: #0f4c81;
-      --secondary: #2a9d8f;
-      --accent: #e9c46a;
-      --text-main: #2d2d2d;
-      --text-light: #5a5a5a;
-      --shadow: rgba(15, 76, 129, 0.15);
-      --modal-bg: rgba(0, 0, 0, 0.7);
+      --bg: #f0f4f8; --card-bg: #ffffff; --primary: #0f4c81; --secondary: #2a9d8f;
+      --accent: #e9c46a; --text-main: #2d2d2d; --text-light: #5a5a5a;
+      --shadow: rgba(15, 76, 129, 0.15); --modal-bg: rgba(0, 0, 0, 0.7);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--text-main);
-      line-height: 1.5;
-    }
-    header {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: #fff;
-      padding: 1.2rem;
-      text-align: center;
-      box-shadow: 0 4px 8px var(--shadow);
-    }
+    body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text-main); line-height: 1.5; }
+    header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #fff; padding: 1.2rem; text-align: center; box-shadow: 0 4px 8px var(--shadow); }
     header h1 { font-size: 2rem; letter-spacing: 1px; }
+    
     main {
-      max-width: 360px;
+      max-width: 1100px;
       margin: 2rem auto;
       padding: 0 1rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
     }
+    
     .search-bar {
       width: 100%;
       padding: 0.7rem 1rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0;
       border: none;
       border-radius: 6px;
       background: #fff;
       box-shadow: 0 2px 6px var(--shadow);
       font-size: 1rem;
       color: var(--text-main);
+      flex-basis: 100%;
     }
     .search-bar::placeholder { color: var(--text-light); }
-
+    
     .card {
       background: var(--card-bg);
       border-radius: 10px;
@@ -57,134 +47,29 @@
       transition: transform .2s, box-shadow .2s;
       display: flex;
       flex-direction: column;
-      margin-bottom: 2rem;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px var(--shadow);
-    }
-    .card img.book-img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
-    .card .info {
-      padding: 1rem;
-      text-align: center;
-    }
-    .card .info h3 {
-      font-size: 1.3rem;
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
-    .card .info button {
-      padding: 0.6rem 1.2rem;
-      background: var(--accent);
-      color: var(--text-main);
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background .2s, transform .2s;
-    }
-    .card .info button:hover {
-      background: #d4af3a;
-      transform: translateY(-2px);
+      margin-bottom: 0;
+      flex: 0 1 320px;
     }
 
-    /* Modal */
-    #chapterModal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: var(--modal-bg);
-      align-items: center; justify-content: center;
-      padding: 1rem;
-      z-index: 1000;
-    }
-    #chapterContent {
-      background: #fff;
-      width: 90%; max-width: 600px;
-      border-radius: 12px;
-      padding: 2rem;
-      position: relative;
-      box-shadow: 0 8px 24px var(--shadow);
-      text-align: center;
-      max-height: 80%;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    #chapterContent h2 {
-      font-size: 1.5rem;
-      color: var(--secondary);
-      margin-bottom: 0.5rem;
-    }
-    #chapterContent p.presentation {
-      font-size: 1rem;
-      color: var(--text-light);
-      margin: 0 auto;
-      max-width: 95%;
-    }
-    .chapter-summary {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .chapter-summary img {
-      max-width: 45%;
-      height: auto;
-      border-radius: 6px;
-      box-shadow: 0 4px 12px var(--shadow);
-      object-fit: contain;
-    }
-
-    /* Lista de capítulos em fluxo vertical por coluna */
-    .chapters-list {
-      columns: 2;               /* Duas colunas de fluxo vertical */
-      column-gap: 1.5rem;       /* Espaço entre colunas */
-      list-style: none;
-      padding: 0;
-      margin: 0 auto;
-    }
-    @media (max-width: 600px) {
-      .chapters-list {
-        columns: 1;
-      }
-    }
-    .chapters-list li {
-      break-inside: avoid;      /* Evita quebra no meio do item */
-      margin-bottom: 0.5rem;
-    }
-    .chapters-list li a {
-      display: block;
-      text-align: center;
-      text-decoration: none;
-      color: var(--primary);
-      font-weight: 500;
-      padding: 0.2rem 0;
-      border-bottom: 1px dashed transparent;
-      transition: color .2s, border-color .2s;
-    }
-    .chapters-list li a:hover {
-      color: var(--secondary);
-      border-color: var(--accent);
-    }
-    #closeChapters {
-      position: absolute;
-      top: 1rem; right: 1rem;
-      font-size: 1.5rem;
-      color: var(--text-light);
-      cursor: pointer;
-      transition: color .2s;
-    }
-    #closeChapters:hover {
-      color: var(--primary);
-    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px var(--shadow); }
+    .card img.book-img { width: 100%; height: auto; object-fit: cover; }
+    .card .info { padding: 1rem; text-align: center; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+    .card .info h3 { font-size: 1.3rem; color: var(--primary); margin-bottom: 1rem; }
+    .card .info button { padding: 0.6rem 1.2rem; background: var(--accent); color: var(--text-main); border: none; border-radius: 4px; cursor: pointer; font-weight: 600; transition: background .2s, transform .2s; }
+    .card .info button:hover { background: #d4af3a; transform: translateY(-2px); }
+    #chapterModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--modal-bg); align-items: center; justify-content: center; padding: 1rem; z-index: 1000; }
+    #chapterContent { background: #fff; width: 90%; max-width: 600px; border-radius: 12px; padding: 2rem; position: relative; box-shadow: 0 8px 24px var(--shadow); text-align: center; max-height: 80%; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem; }
+    #chapterContent h2 { font-size: 1.5rem; color: var(--secondary); margin-bottom: 0.5rem; }
+    #chapterContent p.presentation { font-size: 1rem; color: var(--text-light); margin: 0 auto; max-width: 95%; }
+    .chapter-summary { display: flex; gap: 1rem; align-items: flex-start; justify-content: center; flex-wrap: wrap; }
+    .chapter-summary img { max-width: 45%; height: auto; border-radius: 6px; box-shadow: 0 4px 12px var(--shadow); object-fit: contain; }
+    .chapters-list { columns: 2; column-gap: 1.5rem; list-style: none; padding: 0; margin: 0 auto; }
+    @media (max-width: 600px) { .chapters-list { columns: 1; } }
+    .chapters-list li { break-inside: avoid; margin-bottom: 0.5rem; }
+    .chapters-list li a { display: block; text-align: center; text-decoration: none; color: var(--primary); font-weight: 500; padding: 0.2rem 0; border-bottom: 1px dashed transparent; transition: color .2s, border-color .2s; }
+    .chapters-list li a:hover { color: var(--secondary); border-color: var(--accent); }
+    #closeChapters { position: absolute; top: 1rem; right: 1rem; font-size: 1.5rem; color: var(--text-light); cursor: pointer; transition: color .2s; }
+    #closeChapters:hover { color: var(--primary); }
   </style>
 </head>
 <body>
@@ -193,67 +78,142 @@
   </header>
   <main>
     <input id="searchInput" class="search-bar" type="text" placeholder="Pesquisar por título...">
+
     <div class="card">
-      <img class="book-img"
-           src="https://i.ibb.co/WvFbGRZ9/correntes-filos-ficas-da-tecnologia.png"
-           alt="Correntes Filosóficas da Tecnologia">
+      <img class="book-img" src="https://i.ibb.co/WvFbGRZ9/correntes-filos-ficas-da-tecnologia.png" alt="Correntes Filosóficas da Tecnologia">
       <div class="info">
         <h3>Correntes Filosóficas da Tecnologia</h3>
-        <button id="openBook">Acessar</button>
+        <button id="openBook1">Acessar</button>
       </div>
     </div>
+
+    <div class="card">
+      <img class="book-img" src="https://i.imgur.com/UveAbVH.png" alt="Ecossistema de Tecnologias Quânticas">
+      <div class="info">
+        <h3>Ecossistema de Tecnologias Quânticas</h3>
+        <button id="openBook2">Acessar</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="book-img" src="https://i.imgur.com/gYsYpbh.png" alt="Patologias Tecnológicas">
+      <div class="info">
+        <h3>Tecnologia Patológica: riscos, diagnósticos e análises</h3>
+        <button id="openBook3">Acessar</button>
+      </div>
+    </div>
+
   </main>
 
   <div id="chapterModal">
     <div id="chapterContent">
       <span id="closeChapters">&times;</span>
-      <h2>Correntes Filosóficas da Tecnologia</h2>
-      <p class="presentation">
-        Uma análise crítica dos fundamentos teóricos que moldam a evolução e o impacto da tecnologia na sociedade contemporânea.
-      </p>
+      <h2 id="modalBookTitle"></h2>
+      <p id="modalBookPresentation" class="presentation"></p>
       <div class="chapter-summary">
-        <img src="https://i.ibb.co/WvFbGRZ9/correntes-filos-ficas-da-tecnologia.png"
-             alt="Capa do livro">
+        <img id="modalBookCover" src="" alt="Capa do livro">
       </div>
       <ul class="chapters-list" id="chaptersList">
-        <li><a href="https://drive.google.com/file/d/1u23GiSJok3yiOtA6d71TIPA3cUj55xUG/preview" target="_blank">1. Tecnoautoritarismo</a></li>
-        <li><a href="https://drive.google.com/file/d/1-69zSGw-CvKMXx0IAURSDzLgsUWZM1E7/preview" target="_blank">2. Cyberpunk</a></li>
-        <li><a href="https://drive.google.com/file/d/1-Z6juEJ0bahbu7q_o0GX_44oDWa2Q3Ci/preview" target="_blank">3. Cypherpunk</a></li>
-        <li><a href="https://drive.google.com/file/d/1UuSGPgqxn4eRfmZAvzVEUdDtGBon8OI-/preview" target="_blank">4. Dataismo</a></li>
-        <li><a href="https://drive.google.com/file/d/1DRxvbM_lep2CVi6ytXCNn165oVZndmeT/preview" target="_blank">5. Transumanismo</a></li>
-        <li><a href="https://drive.google.com/file/d/1843U4GDoDdNvxCVwTLzg_dUN-OtOoSov/preview" target="_blank">6. Biohacking</a></li>
-        <li><a href="https://drive.google.com/file/d/1Ze0onK664DnSVdrHJ369EvlzHEODjYf0/preview" target="_blank">7. Nootrópicos</a></li>
-        <li><a href="https://drive.google.com/file/d/10VyXNfGzTZnd36ep_lCmFRp6t-744D44/preview" target="_blank">8. Ludologia</a></li>
-        <li><a href="https://drive.google.com/file/d/1P-FTCm6Osx8X2NTsOGoEi3w2HGUvBQ9p/preview" target="_blank">9. Anarquismo Digital</a></li>
-        <li><a href="https://drive.google.com/file/d/1OoIGap1zUC2-PhOKPqiqnZ5nIbD80kB7/preview" target="_blank">10. Neo-Ludismo</a></li>
-        <li><a href="https://drive.google.com/file/d/1kFDvYe5dBRn9zVlosFJnJK0Pepmq9J30/preview" target="_blank">11. Tecnofeminismo</a></li>
-        <li><a href="https://drive.google.com/file/d/1DeBdjmhk_JDypwNQ6BBzmAy0R7QyDY8p/preview" target="_blank">12. Tecnogaianismo</a></li>
-        <li><a href="https://drive.google.com/file/d/1w32lOSIH_vHz7f9-1Pzq3_vwaW-NGHJN/preview" target="_blank">13. Cibernética</a></li>
-        <li><a href="https://drive.google.com/file/d/1wUBC1Bz3POFiGQkstFwSJijFn0jlBZqa/preview" target="_blank">14. Singularidade Tecnológica</a></li>
-      </ul>
+        </ul>
     </div>
   </div>
 
   <script>
-    const openBook     = document.getElementById('openBook');
-    const chapterModal = document.getElementById('chapterModal');
-    const closeCh      = document.getElementById('closeChapters');
+    // --- Dados dos Livros ---
+    const book1Data = {
+      title: 'Correntes Filosóficas da Tecnologia',
+      presentation: 'Uma análise crítica dos fundamentos teóricos que moldam a evolução e o impacto da tecnologia na sociedade contemporânea.',
+      coverImg: 'https://i.ibb.co/WvFbGRZ9/correntes-filos-ficas-da-tecnologia.png',
+      chapters: [
+        { title: '1. Tecnoautoritarismo', url: 'https://drive.google.com/file/d/1u23GiSJok3yiOtA6d71TIPA3cUj55xUG/preview' }, { title: '2. Cyberpunk', url: 'https://drive.google.com/file/d/1-69zSGw-CvKMXx0IAURSDzLgsUWZM1E7/preview' }, { title: '3. Cypherpunk', url: 'https://drive.google.com/file/d/1-Z6juEJ0bahbu7q_o0GX_44oDWa2Q3Ci/preview' },
+        { title: '4. Dataismo', url: 'https://drive.google.com/file/d/1UuSGPgqxn4eRfmZAvzVEUdDtGBon8OI-/preview' }, { title: '5. Transumanismo', url: 'https://drive.google.com/file/d/1DRxvbM_lep2CVi6ytXCNn165oVZndmeT/preview' }, { title: '6. Biohacking', url: 'https://drive.google.com/file/d/1843U4GDoDdNvxCVwTLzg_dUN-OtOoSov/preview' },
+        { title: '7. Nootrópicos', url: 'https://drive.google.com/file/d/1Ze0onK664DnSVdrHJ369EvlzHEODjYf0/preview' }, { title: '8. Ludologia', url: 'https://drive.google.com/file/d/10VyXNfGzTZnd36ep_lCmFRp6t-744D44/preview' }, { title: '9. Anarquismo Digital', url: 'https://drive.google.com/file/d/1P-FTCm6Osx8X2NTsOGoEi3w2HGUvBQ9p/preview' },
+        { title: '10. Neo-Ludismo', url: 'https://drive.google.com/file/d/1OoIGap1zUC2-PhOKPqiqnZ5nIbD80kB7/preview' }, { title: '11. Tecnofeminismo', url: 'https://drive.google.com/file/d/1kFDvYe5dBRn9zVlosFJnJK0Pepmq9J30/preview' }, { title: '12. Tecnogaianismo', url: 'https://drive.google.com/file/d/1DeBdjmhk_JDypwNQ6BBzmAy0R7QyDY8p/preview' },
+        { title: '13. Cibernética', url: 'https://drive.google.com/file/d/1w32lOSIH_vHz7f9-1Pzq3_vwaW-NGHJN/preview' }, { title: '14. Singularidade', url: 'https://drive.google.com/file/d/1wUBC1Bz3POFiGQkstFwSJijFn0jlBZqa/preview' }
+      ]
+    };
 
-    openBook.addEventListener('click', () => {
+    const book2Data = {
+      title: 'Ecossistema de Tecnologias Quânticas',
+      presentation: 'Uma exploração sobre os componentes, avanços e aplicações da computação, comunicação e criptografia quânticas, que prometem revolucionar a tecnologia.',
+      coverImg: 'https://i.imgur.com/UveAbVH.png',
+      chapters: [
+        /* --- LINKS RECUPERADOS AQUI --- */
+        { title: '1. Computação Quântica', url: 'https://drive.google.com/file/d/15WMM2gB4SBEdRsRhRAR99m4l824NssTn/preview' },
+        { title: '2. Internet Quântica', url: 'https://drive.google.com/file/d/10WXlHerXT26FFzhG6_SMr8Fg-p4kuRLJ/preview' },
+        { title: '3. Criptografia Quântica', url: 'https://drive.google.com/file/d/1y_YLgnQ2h2bUIsaRNmEnqlISEBWbAdva/preview' },
+        { title: '4. Cloud Quântica', url: 'https://drive.google.com/file/d/10pLM1-ZFZXpjiOgbBlT3iTT0eOsGspCn/preview' },
+        { title: '5. IA Quântica', url: 'https://drive.google.com/file/d/1eQfMe0RZaF1pBqacooQ1T-V2_7MVZBnj/preview' },
+      ]
+    };
+
+    const book3Data = {
+      title: 'Patologias TecnológicaTecnologia Patológica: riscos, diagnósticos e análisess',
+      presentation: 'Uma análise aprofundada dos efeitos adversos da tecnologia na saúde mental e social. Aborda temas como nomofobia, ansiedade digital, vício em redes sociais e a formação de bolhas ideológicas.',
+      coverImg: 'https://i.imgur.com/gYsYpbh.png',
+      chapters: [
+        { title: '01. ansiedade e estresse no contexto tecnológico', url: 'https://drive.google.com/file/d/1EwfZJMVh7KItLjHX0rTlNuowNDFreK0e/preview' },
+        { title: '02. dependência tecnológica na era digital', url: 'https://drive.google.com/file/d/1SpiRo9Jnu4L-LrCLhkb1b59mLAYrVXX7/preview' },
+        { title: '03. despersonalização e isolamento social associados à tecnologia', url: 'https://drive.google.com/file/d/198tUOwjeMvwmDHpsY0GMoADAG82FMeGa/preview' },
+        { title: '04. distúrbios auditivos associados à tecnologia', url: 'https://drive.google.com/file/d/1-8cQYwWEOI_bs9tsV3KG_wjzzhoDAmRQ/preview' },
+        { title: '05. distúrbios do sono associados à tecnologia', url: 'https://drive.google.com/file/d/1Gtzf0URHlkbSIVQ7JpsGH1FbOiwazOHT/preview' },
+        { title: '06. distúrbios visuais associados à tecnologia', url: 'https://drive.google.com/file/d/1pFkt3RwSvOcGHBUwjfoTgKbAjKKzg9DT/preview' },
+        { title: '07. dores de cabeça e tensão muscular associados à tecnologia', url: 'https://drive.google.com/file/d/14b_n5fySZPkSe9Ra_zGwdgCxvgeq_KLS/preview' },
+        { title: '08. estresse pós-traumático da tecnologia', url: 'https://drive.google.com/file/d/1YpXDNcNnube8oYAYiBA_53C8EaSA2Bmp/preview' },
+        { title: '09. lesão por esforço repetitivo associados à tecnologia', url: 'https://drive.google.com/file/d/1xmMduwtG6UEoT1JVjnBHa9JcEgYJUUWW/preview' },
+        { title: '10. problemas de aprendizado e concentração associados à tecnologia', url: 'https://drive.google.com/file/d/1og-QQzEBKmYY_EBqRncV1NzYpZqxnnwm/preview' },
+        { title: '11. problemas de comunicação social associados à tecnologia', url: 'https://drive.google.com/file/d/1nkBXcPwsIrWvoq8B5ilisoLEPmoWeH4O/preview' },
+        { title: '12. problemas de memória associados à tecnologia', url: 'https://drive.google.com/file/d/18i2oh4lTJM_J4gp_DravDU1YlRlgk2y5/preview' },
+        { title: '13. síndrome de burnout digital', url: 'https://drive.google.com/file/d/1GjeaG-y1gmwbfiA13WKvtup6HM9wgfLq/preview' },
+        { title: '14. fadiga crônica associados à tecnologia', url: 'https://drive.google.com/file/d/1tCMdHY2m7cSJ-frle7xkE47SBP2VHc0B/preview' },
+        { title: '15. cansaço tecnológico', url: 'https://drive.google.com/file/d/16LUgUc0lU-MWXz9DLPgRrscscPmkd-B2/preview' },
+        { title: '16. transtorno da atenção e da concentração associados à tecnologia', url: 'https://drive.google.com/file/d/1TLiqBcqysJ_2dP8t6w2IdDegV5HCj-Eb/preview' },
+        
+      ]
+    };
+    
+    // --- Elementos do DOM ---
+    const chapterModal = document.getElementById('chapterModal');
+    const closeCh = document.getElementById('closeChapters');
+    const modalTitle = document.getElementById('modalBookTitle');
+    const modalPresentation = document.getElementById('modalBookPresentation');
+    const modalCover = document.getElementById('modalBookCover');
+    const chaptersList = document.getElementById('chaptersList');
+    
+    // --- Funções ---
+    function openModalWithBookData(bookData) {
+      modalTitle.textContent = bookData.title;
+      modalPresentation.textContent = bookData.presentation;
+      modalCover.src = bookData.coverImg;
+      modalCover.alt = `Capa do livro ${bookData.title}`;
+      chaptersList.innerHTML = '';
+      bookData.chapters.forEach(chapter => {
+        const listItem = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = chapter.url;
+        link.textContent = chapter.title;
+        link.target = '_blank';
+        listItem.appendChild(link);
+        chaptersList.appendChild(listItem);
+      });
       chapterModal.style.display = 'flex';
-    });
-    closeCh.addEventListener('click', () => {
-      chapterModal.style.display = 'none';
-    });
-    chapterModal.addEventListener('click', e => {
-      if (e.target === chapterModal) closeCh.click();
-    });
+    }
+
+    // --- Event Listeners ---
+    document.getElementById('openBook1').addEventListener('click', () => { openModalWithBookData(book1Data); });
+    document.getElementById('openBook2').addEventListener('click', () => { openModalWithBookData(book2Data); });
+    document.getElementById('openBook3').addEventListener('click', () => { openModalWithBookData(book3Data); });
+    
+    closeCh.addEventListener('click', () => { chapterModal.style.display = 'none'; });
+    chapterModal.addEventListener('click', e => { if (e.target === chapterModal) closeCh.click(); });
 
     document.getElementById('searchInput').addEventListener('input', e => {
       const termo = e.target.value.toLowerCase();
-      const card  = document.querySelector('.card');
-      card.style.display = card.querySelector('h3').textContent
-        .toLowerCase().includes(termo) ? 'flex' : 'none';
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        const titulo = card.querySelector('h3').textContent.toLowerCase();
+        card.style.display = titulo.includes(termo) ? 'flex' : 'none';
+      });
     });
   </script>
 </body>
